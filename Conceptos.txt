@@ -1,0 +1,29 @@
+
+----------------
+A. INSTALACIONES
+----------------
+
+
+1. El código está tipado y vuelve más sólido y con menos errores el código de javascript, react, y angular.
+
+2. Requiere o se recomienda: Chrome, Visual Studio Code, GIT, NODE y Typescript
+
+3. Typescript corre sobre Node, por lo que es requisito imprescindible.
+
+4. Cuando compile el typescript se convierte en javascript.
+
+5. Instalar typescript:  npm install -g typescript
+                         tsc -v
+                    
+6. Actualizar npm a la versión indicada: npm install -g npm@11.1.0
+
+7. Creas archivos .ts con código typescript y los compilamos desde la línea de comandos mediante tsc script.ts   siendo script.ts el fichero.  Esto nos generará el script.js
+
+8. Instalar la extensión Live Server de Ritwick Dey
+
+
+
+------------------
+B. MODO OBSERVADOR
+------------------
+
