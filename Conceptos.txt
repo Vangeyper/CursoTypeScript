@@ -1,7 +1,7 @@
 
-----------------
+-----------------
 A. INSTALACIONES
-----------------
+-----------------
 
 
 1. El código está tipado y vuelve más sólido y con menos errores el código de javascript, react, y angular.
@@ -23,8 +23,348 @@ A. INSTALACIONES
 
 
 
-------------------
+-------------------
 B. MODO OBSERVADOR
+-------------------
+
+
+9. Permite estar observando si hay cambios en ts y generar el js de forma automatizada. Para entrar en el modo observador en un archivo .ts ejecutamos el comando: tsc archivo.ts -w
+    Siendo -w de watch.
+
+10. Si queremos observar todos los archivos y tener otras características de nuestro proyecto como typescript tenemos que inicializar el proyecto como tal:
+    Ej. 
+        tsc -init
+    Nos crea un archivo tsconfig.json
+    Una vez inicializado como un proyecto ts podemos hacer que se vigile a todos los archivos .ts ejecutando el comando: tsc -w
+
+11. Es importante que por defecto entra el modo:  "use strict";  y esto lo añadirá a todos los ficheros .js generados.
+
+
+
 ------------------
+C. TIPOS DE DATOS
+------------------
+
+
+12. Existen 3 tipos de datos:  
+    a) Primitivos
+        String, Number, Boolean, Undefined, Null
+    b) Compuestos Estructurado
+        Object (Objeto Literal), Array, Enum, Function
+    c) Definidos por Usuario
+        Class, Interface, Type
+
+    String:
+        // STRING
+
+        // Comillas dobles:
+        const str1: string = "Hola, soy una cadena con comillas dobles.";
+        // Comillas simples:
+        const str2: string = 'Hola, soy una cadena con comillas simples.';
+
+        // Template literals (backticks):
+        const nombre: string = 'Juan';
+        const edad: number = 30;
+
+        const str3: string = `Hola, mi nombre es ${nombre} y tengo ${edad} años.`;
+
+    Number:
+        // NUMEROS
+
+        // Números enteros:
+        const num1: number = 10.25;
+
+        // Notación exponencial:
+        const num3: number = 2.5e3; // 2.5 * 10^3 = 2500
+
+        // Notación exponencial negativa:
+        const num4: number = 1.5e-2; // 1.5 * 10^-2 = 0.015
+
+        // Hexadecimales (base 16) utilizando el prefijo "0x":
+        const num5: number = 0xA; // Valor decimal: 10
+
+        // Octales (base 8) utilizando el prefijo "0o":
+        const num6: number = 0o12; // Valor decimal: 10
+
+        // Binarios (base 2) utilizando el prefijo "0b":
+        const num7: number = 0b1010; // Valor decimal: 10
+
+    Boolean:
+        // BOOLEANS
+
+        // Valor booleano true:
+        const bool1: boolean = true;
+
+        // Valor booleano false:
+        const bool2: boolean = false;
+
+    Undefined:
+        // UNDEFINED
+
+        // Declaración de una variable con valor undefined
+        let variableUndefined: undefined;
+
+        // Asignación de valor undefined
+        variableUndefined = undefined;
+
+    Null:
+        // NULL
+
+        // Declaración de una variable con valor null
+        let variablenull: null;
+
+        // Asignación de valor null
+        variablenull = null;
+
+    Objeto Literal:
+        // OBJETO
+
+        const programador = {
+            nombre: "Sergie Code",
+            casado: false,
+            cursosEnYoutube: 4,
+            cursos: ['HTML', 'CSS', 'JAVASCRIPT', 'REACT'],
+            viajeAEuropa: undefined,
+            viajeAEstadosUnidos: null
+        };
+
+        El tipado se hará después con una Interface.
+
+    Array:
+        // ARRAYS 
+
+        // Arreglo de números:
+        const numeros: number[] = [1, 2, 3, 4, 5];
+
+        // Arreglo de cadenas de texto:
+        const nombres: string[] = ["Juan", "María", "Pedro"];
+
+        // Arreglo de booleanos:
+        const valoresBool: boolean[] = [true, false, true];
+
+        //etc (ya los veremos)
+
+    Enum:
+        // ENUM
+
+        // Definición de un enum para días de la semana
+        enum DiasSemana {
+            Lunes,
+            Martes,
+            Miércoles,
+            Jueves,
+            Viernes,
+            Sábado,
+            Domingo,
+        }
+
+
+        //   Enum con valores de cadena (String Enums):
+        enum Colores {
+            Rojo = "rojo",
+            Verde = "verde",
+            Azul = "azul",
+        }
+
+        Con este último tipo de enumerados podemos asignarles un valor string.
+
+    Function:
+        // FUNCIONES
+
+        // Declaración de función con tipado explícito:
+        function sumar(a: number, b: number): number {
+        return a + b;
+        }
+
+        // Funciones flecha con retorno implícito (inferido por TypeScript):
+        const dividir = (a: number, b: number) => a / b;
+
+        // Funciones con parámetros opcionales:
+        function saludar(nombre: string, edad?: number): string {
+        if (edad !== undefined) {
+            return `Hola, mi nombre es ${nombre} y tengo ${edad} años.`;
+        } else {
+            return `Hola, mi nombre es ${nombre}.`;
+        }
+        }
+
+        // Funciones con parámetros por defecto:
+        function saludar2(nombre: string, edad: number = 30): string {
+        return `Hola, mi nombre es ${nombre} y tengo ${edad} años.`;
+        }
+
+    Class:
+        // CLASES
+
+        class Persona {
+            nombre: string;
+
+            constructor(nombre: string) {
+                this.nombre = nombre;
+            }
+
+            saludar() {
+                console.log(`Hola, mi nombre es ${this.nombre}.`);
+            }
+        }
+
+    Interface:
+        // INTERFACES
+
+        // Interface básica:
+        interface Persona {
+        nombre: string;
+        edad: number;
+        }
+
+        // Interface con propiedades opcionales:
+        interface Producto {
+        nombre: string;
+        precio: number;
+        descripcion?: string;
+        }
+
+        // Interface para funciones:
+        interface Comparador {
+        (a: number, b: number): boolean;
+        }
+
+        // Interface para clases (class interfaces):
+        interface Persona {
+        nombre: string;
+        edad: number;
+        saludar(): void;
+        }
+
+    Type:
+        // TYPES
+
+        // Type básico:
+        type Numero = number;
+
+        // Type básico Objeto Literal:
+        type Persona1 = {
+            nombre: string;
+            edad: number;
+        }
+
+        // Type con union types:
+        type Nombre = string | null;
+
+        // Type con propiedades opcionales:
+        type Producto1 = {
+            nombre: string;
+            precio: number;
+            descripcion?: string;
+        }
+
+        // Type para funciones:
+        type Comparador1 = {
+            (a: number, b: number): boolean;
+        }
+
+        // Type para clases (class Types):
+        type Persona2 = {
+            nombre: string;
+            edad: number;
+            saludar(): void;
+        }
+
+    
+
+--------------------
+D. DATOS PRIMITIVOS
+--------------------
+
+13. Si no va a devolver nada una función mejor poner:   void
+    Ej.
+        function jugar( equipo1: number, equipo2: number): void {
+            ...
+        }
+
+14. Al ser tipado en el intelligence del entorno IDE nos aparecerán métodos y funciones del tipo definido, evitando errores.
+
+15. Podemos definir una variable con la posibilidad de tener varios tipos de diferentes valores:
+    Ej.
+        let inter: number | null | undefined = 11
+
+
+
+------------------------
+E. ANY - Cualquier dato
+------------------------
+
+16. Tenemos que tratar de evitar su uso.
+
+17. Su uso:
+    Ej. 
+        let disney:any;
+
+        disney = 'Star'
+        console.log(disney)
+
+        disney = 13
+        console.log(disney)
+
+        disney = true
+        console.log(disney)
+
+    No da error asignes lo que asignes, no infiere los tipos.
+
+
+
+----------
+F. Arrays
+----------
+
+18. Ej.
+        let arreglo = [1,2,3,4,5,6]
+    Aunque no ponemos el tipado se infiere que es un arreglo de numbers, y si hacemos un arreglo.push('valor') petará. 
+    De todas formas en TS tenemos que indicar un tipado:
+    Ej.
+        let arreglo:number[] = [1,2,3,4,5,6]
+        let arreglo2:string[] = ['h1','h2','h3']
+
+19. Al poner el tipado las funciones que se ofrecen en el entorno IDE ya son del tipo adecuado, y si nos equivocamos nos lo marcará como error:
+    Ej.
+        arreglo2.indexof('Html')
+    Dará error marcando subrayado en rojo el indexof puesto que debe ser: indexOf
+
+20. No hacer aunque se pueda:  let arregloMezclado: any[] = [1,2,'hola',3,'sup']
+
+
+
+-----------
+G. Objetos
+-----------
+
+21. Ej.
+        let programador = {
+            nombre: 'Pepe',
+            tecnologias: ['React', 'Angular', 'Typescript'],
+            tomaMate: true
+        }
+
+    Esto hace que aunque no tenga tipado lo vea como: nombre: string, tecnologias: string[], tomaMate: boolean
+    Cualquier otro tipo en el futuro dará error.
+
+    Si ponemos un Ej.
+                    programador1 = {}                        
+    Dará error puesto que no puede ser asignado el objeto literal vacío según lo definido.
+
+    Ej. 
+        programador1 = {
+            nombre: 'Ricardo',
+            tecnologias: ['C#'],
+            tomaMate: false
+        }
+
+    Este sería correcto.
+
+
+
+----------------------
+H. TYPE Personalizado
+----------------------
 
 
