@@ -338,7 +338,8 @@ F. Arrays
 G. Objetos
 -----------
 
-21. Ej.
+21. No podemos tipar los objetos literales de forma directa, habría que definir una estructura.
+    Ej.
         let programador = {
             nombre: 'Pepe',
             tecnologias: ['React', 'Angular', 'Typescript'],
@@ -366,5 +367,123 @@ G. Objetos
 ----------------------
 H. TYPE Personalizado
 ----------------------
+
+22. Nos permite definir nuestros propios tipos. 
+    Ej.
+        type Programador = {
+            nombre: string,
+            tecnologias: string[],
+            tomaMate: boolean
+        }
+
+    Con esto ya podemos tipar nuestro programador1:
+    Ej.
+        let programador: Programador = {
+            nombre: 'Pepe',
+            tecnologias: ['React', 'Angular', 'Typescript'],
+            tomaMate: true            
+        }
+    
+        let programador2: Programador = {
+            nombre: 'Pepe',
+            tecnologias: ['React', 'Angular', 'Typescript']
+        }
+
+    El programador2 daría error.
+    Si ponemos un campo menos nos dará error subrayando la variable programador. 
+    Podemos evitar ese problema poniendo la posibilidad de que sea opcional usando el ?:
+    Ej.
+        type Programador = {
+            nombre: string,
+            tecnologias: string[],
+            tomaMate?: boolean
+        }
+
+        let programador2: Programador = {
+            nombre: 'Pepe',
+            tecnologias: ['React', 'Angular', 'Typescript']
+        }
+
+    Sería correcto.
+
+    Si sabemos que nos puede llegar un valor Null en el campo lo mejor es hacer un OR en la definición del tipo:
+    Ej.
+        type Programador = {
+            nombre: string,
+            tecnologias: string[],
+            tomaMate: boolean | null
+        }
+
+        let programador2: Programador = {
+            nombre: 'Pepe',
+            tecnologias: ['React', 'Angular', 'Typescript'],
+            tomaMate: null
+        }
+
+    Sería correcto.
+
+
+
+-------------
+I. Interface
+-------------
+
+23. Una interfaz la podemos definir de la forma:
+    Ej.
+        interface Programador {
+            nombre: string,
+            tecnologias: string[],
+            tomaMate?: boolean | null
+        }
+
+    Definimos una función:
+    Ej.
+        function enviarCurriculum( programador: Programador ) {
+            console.log(`Este curriculum es de ${programador.nombre}` )
+        }
+
+24. IMPORTANTE: si tenemos:
+    Ej.
+        interface Programador {
+            nombre: string,
+            tecnologias: string[],
+            tomaMate?: boolean | null
+        }
+
+        let dev: Programador = {
+            nombre: 'Pepe',
+            tecnologias: ['R', 'S', 'T'],
+            tomarMate: true
+        }
+        let dev2 = {
+            nombre: 'Fede',
+            tecnologias: ['J', 'T'],
+            tomarMate: false,
+            apellido: 'Berto',
+            recibido: false
+        }
+        
+        function enviarCurriculum( programador: Programador ) {
+            console.log(`Este curriculum es de ${programador.apellido}` )
+        }
+
+        programador.apellido -> dará error por no existir el campo dentro de la interface.
+
+    Si ahora rehacemos con un type lo mismo:
+    Ej.
+        type Programador = {
+            nombre: string,
+            tecnologias: string[],
+            tomaMate?: boolean | null
+        }
+
+        enviarCurriculum(dev2)  -> funciona, aunque dev2 no es una variable de tipo Programador si que tiene los campos del tipo y es aceptado como parámetro de la función.
+    Esto implica que si agregamos atributos de más no nos enteraremos por el tipado.
+
+
+
+----------------
+J. Clases y POO
+----------------
 
 
