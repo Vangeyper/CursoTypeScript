@@ -22,6 +22,10 @@ A. INSTALACIONES
 8. Instalar la extensión Live Server de Ritwick Dey
 
 
+IMPORTANTE: para hacer archivos con react tienes que configurar el ts para que lo permita:
+    npm install typescript @types/react @types/react-dom
+
+
 
 -------------------
 B. MODO OBSERVADOR
