@@ -25,7 +25,7 @@ A. INSTALACIONES
 IMPORTANTE: para hacer archivos con react tienes que configurar el ts para que lo permita:
     npm install typescript @types/react @types/react-dom
 
-
+OJO: los archivos de contexto para typescript en react deben tener la extensión .tsx y no .ts si contienen código jsx.
 
 -------------------
 B. MODO OBSERVADOR
